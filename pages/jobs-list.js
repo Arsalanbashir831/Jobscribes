@@ -2,8 +2,25 @@
 import Link from "next/link";
 import Layout from "../components/Layout/Layout";
 import BlogSlider from "./../components/sliders/Blog";
+import Modal from "react-bootstrap/Modal";
+import ModalBody from "react-bootstrap/ModalBody";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import ModalFooter from "react-bootstrap/ModalFooter";
+import ModalTitle from "react-bootstrap/ModalTitle";
+import React from "react";
 
 export default function JobList() {
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    const showModal = () => {
+        setIsOpen(true);
+    };
+
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
+
     return (
         <>
             <Layout>
@@ -37,7 +54,7 @@ export default function JobList() {
                                                     <option value>Location</option>
                                                     <option value="AX">colombo</option>
                                                     <option value="AF">kandy</option>
-                                                    
+
                                                 </select>
                                             </div>
                                             <input className="form-input input-keysearch mr-10" type="text" placeholder="Your keyword... " />
@@ -182,9 +199,27 @@ export default function JobList() {
                                                                     <span className="text-muted"></span>
                                                                 </div>
                                                                 <div className="col-lg-5 col-5 text-end">
-                                                                    <div className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
-                                                                        Apply now
+                                                                    <div onClick={showModal} className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
+                                                                        Apply Now
                                                                     </div>
+                                                                    <Modal show={isOpen} onHide={hideModal}>
+                                                                        <Modal.Header>
+                                                                            <Modal.Title>Add your Resume </Modal.Title>
+                                                                        </Modal.Header>
+                                                                        <Modal.Body>
+                                                                            <form>
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleFormControlFile1">Your Resume</label>
+                                                                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" />
+                                                                                </div>
+                                                                            </form>
+                                                                        </Modal.Body>
+                                                                        <Modal.Footer>
+                                                                            <button className="btn btn-primary" onClick={hideModal}>Cancel</button>
+                                                                            <button className="btn btn-sucess" onClick={hideModal} >Save</button>
+                                                                        </Modal.Footer>
+                                                                    </Modal>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -242,9 +277,10 @@ export default function JobList() {
                                                                     <span className="text-muted"></span>
                                                                 </div>
                                                                 <div className="col-lg-5 col-5 text-end">
-                                                                    <div className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
-                                                                        Apply now
+                                                                <div onClick={showModal} className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
+                                                                        Apply Now
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -301,9 +337,10 @@ export default function JobList() {
                                                                     <span className="text-muted"></span>
                                                                 </div>
                                                                 <div className="col-lg-5 col-5 text-end">
-                                                                    <div className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
-                                                                        Apply now
+                                                                <div onClick={showModal} className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
+                                                                        Apply Now
                                                                     </div>
+                                                                   
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -360,9 +397,10 @@ export default function JobList() {
                                                                     <span className="text-muted"></span>
                                                                 </div>
                                                                 <div className="col-lg-5 col-5 text-end">
-                                                                    <div className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
-                                                                        Apply now
+                                                                <div onClick={showModal} className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
+                                                                        Apply Now
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -419,9 +457,10 @@ export default function JobList() {
                                                                     <span className="text-muted"></span>
                                                                 </div>
                                                                 <div className="col-lg-5 col-5 text-end">
-                                                                    <div className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
-                                                                        Apply now
+                                                                <div onClick={showModal} className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
+                                                                        Apply Now
                                                                     </div>
+                                                                   
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -479,9 +518,10 @@ export default function JobList() {
                                                                     <span className="text-muted"></span>
                                                                 </div>
                                                                 <div className="col-lg-5 col-5 text-end">
-                                                                    <div className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
-                                                                        Apply now
+                                                                <div onClick={showModal} className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
+                                                                        Apply Now
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -538,9 +578,10 @@ export default function JobList() {
                                                                     <span className="text-muted"></span>
                                                                 </div>
                                                                 <div className="col-lg-5 col-5 text-end">
-                                                                    <div className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
-                                                                        Apply now
+                                                                <div onClick={showModal} className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
+                                                                        Apply Now
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -597,9 +638,10 @@ export default function JobList() {
                                                                     <span className="text-muted"></span>
                                                                 </div>
                                                                 <div className="col-lg-5 col-5 text-end">
-                                                                    <div className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
-                                                                        Apply now
+                                                                <div onClick={showModal} className="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">
+                                                                        Apply Now
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1059,7 +1101,7 @@ export default function JobList() {
                                 <div className="box-swiper style-nav-top">
                                     <BlogSlider />
                                 </div>
-                                
+
                             </div>
                         </div>
                     </section>
