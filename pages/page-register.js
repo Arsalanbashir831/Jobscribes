@@ -1,7 +1,21 @@
+import { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 import Link from "next/link";
+import axios from "axios";
 
 export default function Register() {
+    const [ user, setUser ] = useState({
+        
+        a_email: "",
+        a_username: "",
+        a_password: "",
+        a_desc:"Hi I am new user joined "
+    });
+    async function submitHandler(e) {
+        e.preventDefault();
+       await axios.post("http://localhost:8080/Applicant/addApplicant",user)
+        console.log(user);
+      }
     return (
         <>
             <Layout>
@@ -26,25 +40,26 @@ export default function Register() {
                                         <label className="form-label" htmlFor="input-1">
                                             Full Name *
                                         </label>
-                                        <input className="form-control" id="input-1" type="text" required name="fullname" placeholder="" />
+                                        <input 
+                                         className="form-control" id="input-1" type="text" required name="fullname" placeholder="" />
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="input-2">
                                             Email *
                                         </label>
-                                        <input className="form-control" id="input-2" type="email" required name="emailaddress" placeholder="" />
+                                        <input value={user.a_email} onChange={e=>{ e.preventDefault(); setUser({...user,a_email:e.target.value})}} className="form-control" id="input-2" type="email" required name="emailaddress" placeholder="" />
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="input-3">
                                             Username *
                                         </label>
-                                        <input className="form-control" id="input-3" type="text" required name="username" placeholder="" />
+                                        <input  value={user.a_username} onChange={e=>{ e.preventDefault(); setUser({...user,a_username:e.target.value})}} className="form-control" id="input-3" type="text" required name="username" placeholder="" />
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="input-4">
                                             Password *
                                         </label>
-                                        <input className="form-control" id="input-4" type="password" required name="password" placeholder="" />
+                                        <input  value={user.a_password} onChange={e=>{  e.preventDefault(); setUser({...user,a_password:e.target.value})}} className="form-control" id="input-4" type="password" required name="password" placeholder="" />
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="input-5">
@@ -58,10 +73,10 @@ export default function Register() {
                                             <span className="text-small">Agree our terms and policy</span>
                                             <span className="checkmark" />
                                         </label>
-                                        
+
                                     </div>
                                     <div className="form-group">
-                                        <button className="btn btn-brand-1 hover-up w-100" type="submit" name="login">
+                                        <button onClick={submitHandler} className="btn btn-brand-1 hover-up w-100" type="submit" name="login">
                                             Submit &amp; Register
                                         </button>
                                     </div>
@@ -76,7 +91,8 @@ export default function Register() {
                             <div className="img-1 d-none d-lg-block">
                                 <img className="shape-1" src="assets/imgs/page/login-register/img-1.svg" alt="Jobscribes" />
                             </div>
-                            
+
+
                         </div>
                     </div>
                 </section>
