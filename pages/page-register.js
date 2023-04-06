@@ -5,7 +5,6 @@ import axios from "axios";
 
 export default function Register() {
     const [ user, setUser ] = useState({
-        
         a_email: "",
         a_username: "",
         a_password: "",
@@ -73,7 +72,6 @@ export default function Register() {
                                             <span className="text-small">Agree our terms and policy</span>
                                             <span className="checkmark" />
                                         </label>
-
                                     </div>
                                     <div className="form-group">
                                         <button onClick={submitHandler} className="btn btn-brand-1 hover-up w-100" type="submit" name="login">
@@ -91,8 +89,6 @@ export default function Register() {
                             <div className="img-1 d-none d-lg-block">
                                 <img className="shape-1" src="assets/imgs/page/login-register/img-1.svg" alt="Jobscribes" />
                             </div>
-
-
                         </div>
                     </div>
                 </section>
