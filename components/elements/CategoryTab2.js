@@ -37,7 +37,7 @@ const CategoryTab2 = () => {
                                 <div className="card-grid-2-image"><span className="lbl-hot bg-green"><span>Freelancer</span></span>
                                     <div className="image-box">
                                         <figure><img src="assets/imgs/page/homepage2/img1.png" alt="JOBSCRIBES
-        S" /></figure>
+        S" /></figure>  
                                     </div>
                                 </div>
                                 <div className="card-block-info">
