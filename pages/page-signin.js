@@ -1,12 +1,33 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
+import { useState } from "react";
 import Layout from "../components/Layout/Layout";
 import Link from "next/link";
+import axios from "axios";
 
 export default function Signin() {
+
+    const [user , setUser]= useState([{a_email:"",a_password:""}])
+    
+    async function submitHandler(e) {
+        e.preventDefault();
+    //    axios call
+    let res= await axios.get(`http://localhost:8080/Applicant/getCredientials/${user.a_email}`)
+    if (res.data.length===0){
+        console.log('invalid credentials')
+      
+    }else{
+        console.log("redirect to page")
+        window.location.href = '/index-2';
+       
+    }
+        console.log(res.data);
+      
+      }
     return (
         <>
             <Layout>
+                
                 <section className="pt-100 login-register">
                     <div className="container">
                         <div className="row login-register-cover">
@@ -28,13 +49,13 @@ export default function Signin() {
                                         <label className="form-label" htmlFor="input-1">
                                             Username or Email address *
                                         </label>
-                                        <input className="form-control" id="input-1" type="text" required name="fullname" placeholder="Your Name" />
+                                        <input value={user.a_email} onChange={e=>{ e.preventDefault(); setUser({...user,a_email:e.target.value})}} className="form-control" id="input-1" type="text" required name="fullname" placeholder="Your Name" />
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="input-4">
                                             Password *
                                         </label>
-                                        <input className="form-control" id="input-4" type="password" required name="password" placeholder="************" />
+                                        <input value={user.a_password} onChange={e=>{ e.preventDefault(); setUser({...user,a_password:e.target.value})}} className="form-control" id="input-4" type="password" required name="password" placeholder="************" />
                                     </div>
                                     <div className="login_footer form-group d-flex justify-content-between">
                                         <label className="cb-container">
@@ -47,7 +68,7 @@ export default function Signin() {
                                         </Link>
                                     </div>
                                     <div className="form-group">
-                                        <button className="btn btn-brand-1 hover-up w-100" type="submit" name="login">
+                                        <button onClick={submitHandler} className="btn btn-brand-1 hover-up w-100" type="submit" name="login">
                                             Login
                                         </button>
                                     </div>
